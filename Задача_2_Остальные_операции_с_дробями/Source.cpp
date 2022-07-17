@@ -1,4 +1,4 @@
-#include <cstdio>
+ï»¿#include <cstdio>
 #include <iostream>
 #include <stdlib.h>
 #include <windows.h>
@@ -18,15 +18,15 @@ int main(int argc, char** argv)
 		
 	Fraction a3(x, y);
 
-	std::cout << "Ââåäèòå ÷èñëèòåëü äðîáè 1: " << "\n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ 1: " << "\n";
 	std::cin >>x;
-	std::cout << "Ââåäèòå çíàìåíàòåëü äðîáè 1: " << "\n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ð¼ÐµÐ½Ð°Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ 1: " << "\n";
 	std::cin >> y;
 	Fraction a1(x, y);
 
-	std::cout << "Ââåäèòå ÷èñëèòåëü äðîáè 2: " << "\n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ 2: " << "\n";
 	std::cin >> x;
-	std::cout << "Ââåäèòå çíàìåíàòåëü äðîáè 2: " << "\n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ð¼ÐµÐ½Ð°Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ 2: " << "\n";
 	std::cin >> y;
 	Fraction a2(x, y);
 
@@ -45,11 +45,11 @@ int main(int argc, char** argv)
 
 	a3 = ++a1 * a2;
 	std::cout << "++" << a1.print_info() << " * " << a2.print_info() << " = " << a3.print_info() << "\n";
-	std::cout << "Çíà÷åíèå äðîáè 1 " << a1.print_info() << "\n";
+	std::cout << "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ñ€Ð¾Ð±Ð¸ 1 " << a1.print_info() << "\n";
 
 	a3 = a1-- * a2;
 	std::cout << a1.print_info() << "--" << " * " << a2.print_info() << " = " << a3.print_info() << "\n";
-	std::cout << "Çíà÷åíèå äðîáè 1 " << a1.print_info() << "\n";
+	std::cout << "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ñ€Ð¾Ð±Ð¸ 1 " << a1.print_info() << "\n";
 
 	
 
