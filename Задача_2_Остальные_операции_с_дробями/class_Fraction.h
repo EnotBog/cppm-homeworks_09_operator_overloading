@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <string>
 
+static int NOD(int a, int b); // наибольший общий делитель
+
 class Fraction
 {
 private:
@@ -8,18 +10,14 @@ private:
 	int denominator_;
 
 
-	int NOD(int a, int b) const; // наибольший общий делитель
-	
-
-	void Socr_Fraction(Fraction& a) const;
+	static Fraction MakeShortenFraction(int a,int b);
 	
 
 public:
 	Fraction(int numerator, int denominator);
 
-	void Set_numerator(int x);
-
-	void Set_ndenominator(int y);
+	int get_numerator()const; //для перегруженногоо оператора <<
+	int get_denominator()const; //для перегруженногоо оператора <<
 
 	std::string print_info() const;
 
@@ -38,6 +36,8 @@ public:
 	Fraction operator--();
 
 	Fraction operator--(int); //постфиксная
-	
 
 };
+
+
+

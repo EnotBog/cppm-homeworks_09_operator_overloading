@@ -1,37 +1,47 @@
 ﻿#include <string>
 #include "class_Fraction.h"
 
-	 int Fraction::NOD(int a, int b) const // наибольший общий делитель
+	
+int NOD(int a, int b)
+{
+	if (a % b == 0)
 	{
-		if (a % b == 0)
-		{
-			return b;
-		}
-		if (b % a == 0)
-		{
-			return a;
-		}
-
-
-		if (a > b)
-		{
-			return NOD(a - b, b);
-		}
-		if (a < b)
-		{
-			return NOD(a, b - a);
-		}
-		return 0;
+		return b;
+	}
+	if (b % a == 0)
+	{
+		return a;
 	}
 
-	void Fraction::Socr_Fraction(Fraction& a) const
+
+	if (a > b)
 	{
-		int x = NOD(a.numerator_, a.denominator_);
-		if (x != 1)
+		return NOD(a - b, b);
+	}
+	if (a < b)
+	{
+		return NOD(a, b - a);
+	}
+	return 0;
+}
+
+int Fraction::get_numerator() const //для перегруженногоо оператора <<
+{
+	return this->numerator_;
+};
+int Fraction::get_denominator() const //для перегруженногоо оператора <<
+{
+	return this->denominator_;
+};
+
+Fraction Fraction::MakeShortenFraction(int a,int b)
+	{
+		int x = NOD(a,b);
+		if (x <= 0)
 		{
-			a.numerator_ /= x;
-			a.denominator_ /= x;
+			return Fraction(a, b);
 		};
+		return Fraction(a / x, b / x);
 	}
 
 
@@ -39,16 +49,6 @@
 	{
 		numerator_ = numerator;
 		denominator_ = denominator;
-	}
-
-	void Fraction::Set_numerator(int x)
-	{
-		numerator_ = x;
-	}
-
-	void Fraction::Set_ndenominator(int y)
-	{
-		denominator_ = y;
 	}
 
 	std::string Fraction::print_info() const
@@ -61,9 +61,7 @@
 		int a = (numerator_ * other.denominator_) + (other.numerator_ * denominator_);
 		int b = denominator_ * other.denominator_;
 
-		Fraction buf(a, b);
-		Socr_Fraction(buf);
-		return  buf;
+		return  MakeShortenFraction(a,b);
 	}
 
 	Fraction Fraction::operator-(const Fraction& other) const
@@ -71,9 +69,7 @@
 		int a = (numerator_ * other.denominator_) - (other.numerator_ * denominator_);
 		int b = denominator_ * other.denominator_;
 
-		Fraction buf(a, b);
-		Socr_Fraction(buf);
-		return  buf;
+		return  MakeShortenFraction(a, b);
 	}
 
 	Fraction Fraction::operator*(const Fraction& other) const
@@ -81,9 +77,7 @@
 		int a = (numerator_ * other.numerator_);
 		int b = denominator_ * other.denominator_;
 
-		Fraction buf(a, b);
-		Socr_Fraction(buf);
-		return  buf;
+		return  MakeShortenFraction(a, b);
 	}
 
 	Fraction Fraction::operator/(const Fraction& other) const
@@ -91,16 +85,12 @@
 		int a = (numerator_ * other.denominator_);
 		int b = denominator_ * other.numerator_;
 
-		Fraction buf(a, b);
-		Socr_Fraction(buf);
-		return  buf;
+		return  MakeShortenFraction(a, b);
 	}
 
 	Fraction Fraction::operator++()
 	{
-		numerator_ += denominator_;
-
-		Socr_Fraction(*this);
+		*this = MakeShortenFraction(numerator_ + denominator_, denominator_);
 		return *this;
 	}
 
@@ -108,22 +98,22 @@
 	{
 		Fraction temp = *this;
 		++(*this);
-		Socr_Fraction(temp);
 		return temp;
 	}
 
 	Fraction Fraction::operator--()
 	{
 		numerator_ -= denominator_;
-		Socr_Fraction(*this);
-		return *this;
+
+		return  MakeShortenFraction(numerator_, denominator_);
 	}
 
 	Fraction Fraction::operator--(int) //постфиксная
 	{
 		Fraction temp = *this;
 		--(*this);
-		Socr_Fraction(temp);
 		return temp;
 	}
 
+	
+	

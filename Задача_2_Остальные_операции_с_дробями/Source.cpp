@@ -5,6 +5,12 @@
 #include <locale.h>
 #include "class_Fraction.h"
 
+	static std::ostream& operator << (std::ostream& out, const Fraction& fraction)
+{
+	return out << fraction.get_numerator() << "/" << fraction.get_denominator();
+};
+
+
 
 int main(int argc, char** argv)
 {
@@ -16,7 +22,6 @@ int main(int argc, char** argv)
 
 	Fraction f(0, 0);
 		
-	Fraction a3(x, y);
 
 	std::cout << "Введите числитель дроби 1: " << "\n";
 	std::cin >>x;
@@ -31,27 +36,25 @@ int main(int argc, char** argv)
 	Fraction a2(x, y);
 
 
-	a3 = a1 + a2;
-	std::cout << a1.print_info() << " + " << a2.print_info() << " = " << a3.print_info()<<"\n";
+	
+	std::cout << a1.print_info() << " + " << a2.print_info() << " = " <<a1+a2<<"\n";
 
-	a3 = a1 - a2;
-	std::cout << a1.print_info() << " - " << a2.print_info() << " = " << a3.print_info() << "\n";
+	
+	std::cout << a1.print_info() << " - " << a2.print_info() << " = " <<a1-a2 << "\n";
 
-	a3 = a1 * a2;
-	std::cout << a1.print_info() << " * " << a2.print_info() << " = " << a3.print_info() << "\n";
+	std::cout << a1.print_info() << " * " << a2.print_info() << " = " << a1 * a2 << "\n";
 
-	a3 = a1 / a2;
-	std::cout << a1.print_info() << " / " << a2.print_info() << " = " << a3.print_info() << "\n";
+	std::cout << a1.print_info() << " / " << a2.print_info() << " = " << a1 / a2 << "\n";
 
-	a3 = ++a1 * a2;
-	std::cout << "++" << a1.print_info() << " * " << a2.print_info() << " = " << a3.print_info() << "\n";
-	std::cout << "Значение дроби 1 " << a1.print_info() << "\n";
+	std::cout << "++" << a1.print_info() << " * " << a2.print_info(); std::cout << " = " << ++a1 * a2 << "\n";
 
-	a3 = a1-- * a2;
-	std::cout << a1.print_info() << "--" << " * " << a2.print_info() << " = " << a3.print_info() << "\n";
 	std::cout << "Значение дроби 1 " << a1.print_info() << "\n";
 
 	
+	std::cout << a1.print_info() << "--" << " * " << a2.print_info();
+	std::cout << " = " << a1-- * a2 << "\n";
+	std::cout << "Значение дроби 1 " << a1.print_info() << "\n";
+
 
 	return 0;
 }

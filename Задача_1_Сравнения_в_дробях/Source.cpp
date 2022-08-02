@@ -20,9 +20,11 @@ public:
 	}
 
 
-	bool operator==(const Fraction other)
+	bool operator==(const Fraction &other) const
 	{
-		int a, b;
+		return numerator_ * other.denominator_ == other.numerator_ * denominator_;
+
+	/*	int a, b;
 		a = numerator_ * other.denominator_;
 		b = other.numerator_ * denominator_;
 		if (a == b)
@@ -32,17 +34,17 @@ public:
 		else
 		{
 			return false;
-		}
+		}*/
 
 	}
 	
-	bool operator!=(const Fraction other)
+	bool operator!=(const Fraction &other) const
 	{
 		return !(this->operator==(other));
 
 	}
 
-	bool operator<(const Fraction other)
+	bool operator<(const Fraction &other) const
 	{
 		int a, b;
 		a = numerator_ * other.denominator_;
@@ -58,12 +60,12 @@ public:
 
 	}
 
-	bool operator>(const Fraction other)
+	bool operator>(const Fraction &other) const
 	{
 		return !(this->operator<(other));
 	}
 
-	bool operator<=(const Fraction other)
+	bool operator<=(const Fraction &other) const
 	{
 		if(this->operator<(other) || this->operator==(other) )
 		{
@@ -76,7 +78,7 @@ public:
 
 	}
 
-	bool operator>=(const Fraction other)
+	bool operator>=(const Fraction &other) const
 	{
 		return !(this->operator<=(other));
 	}
